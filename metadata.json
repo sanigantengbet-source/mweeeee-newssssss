@@ -1,0 +1,6 @@
+{
+  "name": "Indonesia Disaster Monitor",
+  "description": "Platform monitoring dan visualisasi data bencana di Indonesia menggunakan data resmi BMKG, BNPB/InaRISK, dan PVMBG/MAGMA Indonesia.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
