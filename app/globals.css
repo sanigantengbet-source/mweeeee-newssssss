@@ -1,0 +1,162 @@
+@import "tailwindcss";
+@import "maplibre-gl/dist/maplibre-gl.css";
+
+/* GitHub Design Tokens: Dark (Default) & Light */
+:root {
+  --gh-bg: #0d1117;
+  --gh-surface: #161b22;
+  --gh-surface-raised: #21262d;
+  --gh-surface-inset: #090d13;
+  --gh-border: #30363d;
+  --gh-border-subtle: #21262d;
+  --gh-border-active: #58a6ff;
+  --gh-text: #f0f6fc;
+  --gh-text-muted: #8b949e;
+  --gh-text-subtle: #6e7681;
+  --gh-accent: #58a6ff;
+  --gh-success: #3fb950;
+  --gh-danger: #f85149;
+  --gh-warning: #d29922;
+  --gh-btn-bg: #21262d;
+  --gh-btn-hover: #30363d;
+  --gh-btn-border: #30363d;
+}
+
+html.dark {
+  --gh-bg: #0d1117;
+  --gh-surface: #161b22;
+  --gh-surface-raised: #21262d;
+  --gh-surface-inset: #090d13;
+  --gh-border: #30363d;
+  --gh-border-subtle: #21262d;
+  --gh-border-active: #58a6ff;
+  --gh-text: #f0f6fc;
+  --gh-text-muted: #8b949e;
+  --gh-text-subtle: #6e7681;
+  --gh-accent: #58a6ff;
+  --gh-success: #3fb950;
+  --gh-danger: #f85149;
+  --gh-warning: #d29922;
+  --gh-btn-bg: #21262d;
+  --gh-btn-hover: #30363d;
+  --gh-btn-border: #30363d;
+  color-scheme: dark;
+}
+
+html.light {
+  --gh-bg: #f6f8fa;
+  --gh-surface: #ffffff;
+  --gh-surface-raised: #f6f8fa;
+  --gh-surface-inset: #eaeef2;
+  --gh-border: #d0d7de;
+  --gh-border-subtle: #eaeef2;
+  --gh-border-active: #0969da;
+  --gh-text: #1f2328;
+  --gh-text-muted: #57606a;
+  --gh-text-subtle: #8c959f;
+  --gh-accent: #0969da;
+  --gh-success: #1a7f37;
+  --gh-danger: #cf222e;
+  --gh-warning: #9a6700;
+  --gh-btn-bg: #f6f8fa;
+  --gh-btn-hover: #f3f4f6;
+  --gh-btn-border: #d0d7de;
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--gh-bg);
+  color: var(--gh-text);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Custom MapLibre popup and control overrides */
+.maplibregl-popup-content {
+  padding: 0 !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2) !important;
+  overflow: hidden;
+  background: transparent !important;
+}
+
+.maplibregl-popup-anchor-top .maplibregl-popup-tip,
+.maplibregl-popup-anchor-top-left .maplibregl-popup-tip,
+.maplibregl-popup-anchor-top-right .maplibregl-popup-tip {
+  border-bottom-color: var(--gh-surface) !important;
+}
+
+.maplibregl-popup-anchor-bottom .maplibregl-popup-tip,
+.maplibregl-popup-anchor-bottom-left .maplibregl-popup-tip,
+.maplibregl-popup-anchor-bottom-right .maplibregl-popup-tip {
+  border-top-color: var(--gh-surface) !important;
+}
+
+.maplibregl-ctrl-group {
+  border-radius: 0.5rem !important;
+  overflow: hidden;
+  border: 1px solid var(--gh-border) !important;
+  background: var(--gh-surface) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+.maplibregl-ctrl-group button {
+  background: var(--gh-surface) !important;
+  border-color: var(--gh-border) !important;
+}
+
+.maplibregl-ctrl-group button:hover {
+  background: var(--gh-surface-raised) !important;
+}
+
+/* Pulsing radar animation for latest earthquake epicenter */
+@keyframes epicenter-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  70% {
+    transform: scale(1.4);
+    box-shadow: 0 0 0 20px rgba(239, 68, 68, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+.epicenter-ring {
+  animation: epicenter-pulse 2s infinite cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Hide all scrollbar tracks & lines completely across all browsers and devices */
+*, *::before, *::after {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+.no-scrollbar {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+
